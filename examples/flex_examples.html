@@ -4,215 +4,286 @@
     <meta charset="utf-8">
     <title>flex</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <style>
-        *{padding:0;margin:0;box-sizing:border-box;}
-        html{with:100%; height:100%;}
-        body{
-            display:flex;
-            justify-content: center;
-            align-items:center;
-            flex-wrap:wrap;
-            height:100%;
-            width:100%;
-            background:#333;
-        }
-        .father{
-            display:flex;
-            justify-content: space-around;
-            align-items:center;
-            flex-direction:column;
-            border:5px dashed white;
-            height:400px;
-            width:400px;
-        }
-        .father1{
-            display:flex;
-            justify-content: space-around;
-            align-items:center;
-            flex-direction:column-reverse;
-            border:5px dashed white;
-            height:400px;
-            width:400px;
-        }
-        .father2{
-            display:flex;
-            justify-content: space-around;
-            align-items:center;
-            flex-direction:row;
-            border:5px dashed white;
-            height:400px;
-            width:400px;
-        }
-        .father3{
-            display:flex;
-            justify-content: space-around;
-            align-items:center;
-            flex-direction:row-reverse;
-            border:5px dashed white;
-            height:400px;
-            width:400px;
-        }
-        .son{
-            display:flex;
-            justify-content: center;
-            align-items:center;
-            height:100px;
-            border:2px solid white;
-            width:100px;
-            font-weight:bolder;
-            font-size:16px;
-            color:white;
-        }
-        .left-code{
-          display:flex;
-          justify-content: center;
-          align-items:center;
-          color:white;
-        }
-        .right-display{
-          display:flex;
-          justify-content: center;
-          align-items:center;
-          color:white;
-        }
-        .flex-row{
-          width:100%;
-          margin-top:30px;
-          padding-bottom:30px;
-          border-bottom-style:dotted;
-          border-bottom-color:white;
-          border-bottom-width:2px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/flex_examples.css" type="text/css">
 </head>
 
 <body>
-<div class="row flex-row">
-  <div class="col-md-6 col-xs-12 left-code">
-    .father{<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;justify-content: space-around;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;align-items:center;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;flex-direction:column;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;border:5px dashed white;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;height:400px;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;width:400px;<br/>
-        }<br/>
-        .son{<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;align-items:center;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;height:100px;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;border:2px solid white;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;width:100px;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;font-weight:bolder;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;font-size:16px;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;color:white;<br/>
-        }
+  <div class="row row-center">
+    关于flex布局父容器属性实例
   </div>
-  <div class="col-md-6 col-xs-12 right-display">
-    <div class="father">
-        <div class="son">1</div>
-        <div class="son">2</div>
-        <div class="son">3</div>
+  <div class="row flex-row">
+    <div class="col-md-6 col-xs-12 left-code">
+      <h3>flex-direction:column(主轴方向为竖直方向)</h3>
+      .father{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: space-around;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center/flex-start/flex-end;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;flex-direction:column;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:5px dashed white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:400px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:400px;<br/>
+          }<br/>
+          .son{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:2px solid white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-weight:bolder;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-size:16px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;color:white;<br/>
+          }
+    </div>
+    <div class="col-md-6 col-xs-12 right-display">
+      <div class="father">
+          <div class="son">1</div>
+          <div class="son">2</div>
+          <div class="son">3</div>
+      </div>
     </div>
   </div>
-</div>
+  <div class="row flex-row">
+    <div class="col-md-6 col-xs-12 right-display">
+      <div class="father7">
+          <div class="son">1</div>
+          <div class="son">2</div>
+          <div class="son">3</div>
+      </div>
+    </div>
+    <div class="col-md-6 col-xs-12 right-display">
+      <div class="father8">
+          <div class="son">1</div>
+          <div class="son">2</div>
+          <div class="son">3</div>
+      </div>
+    </div>
+  </div>
 
-<div class="row flex-row">
-  <div class="col-md-6 col-xs-12 left-code">
-    .father{<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;justify-content: space-around;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;align-items:center;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;flex-direction:column-reverse;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;border:5px dashed white;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;height:400px;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;width:400px;<br/>
-        }<br/>
-        .son{<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;align-items:center;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;height:100px;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;border:2px solid white;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;width:100px;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;font-weight:bolder;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;font-size:16px;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;color:white;<br/>
-        }
-  </div>
-  <div class="col-md-6 col-xs-12 right-display">
-    <div class="father1">
-        <div class="son">1</div>
-        <div class="son">2</div>
-        <div class="son">3</div>
+  <div class="row flex-row">
+    <div class="col-md-6 col-xs-12 left-code">
+      <h3>flex-direction:column-reverse</h3>
+      .father{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: space-around;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;flex-direction:column-reverse;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:5px dashed white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:400px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:400px;<br/>
+          }<br/>
+          .son{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:2px solid white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-weight:bolder;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-size:16px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;color:white;<br/>
+          }
+    </div>
+    <div class="col-md-6 col-xs-12 right-display">
+      <div class="father1">
+          <div class="son">1</div>
+          <div class="son">2</div>
+          <div class="son">3</div>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="row flex-row">
-  <div class="col-md-6 col-xs-12 left-code">
-    .father{<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;justify-content: space-around;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;align-items:center;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;flex-direction:row;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;border:5px dashed white;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;height:400px;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;width:400px;<br/>
-        }<br/>
-        .son{<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;align-items:center;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;height:100px;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;border:2px solid white;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;width:100px;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;font-weight:bolder;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;font-size:16px;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;color:white;<br/>
-        }
-  </div>
-  <div class="col-md-6 col-xs-12 right-display">
-    <div class="father2">
-        <div class="son">1</div>
-        <div class="son">2</div>
-        <div class="son">3</div>
+  <div class="row flex-row">
+    <div class="col-md-6 col-xs-12 left-code">
+      <h3>flex-direction:row(此时主轴方向为水平方向)</h3>
+      .father{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: space-around;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center/flex-start/flex-end;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;flex-direction:row;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:5px dashed white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:400px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:400px;<br/>
+          }<br/>
+          .son{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:2px solid white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-weight:bolder;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-size:16px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;color:white;<br/>
+          }
+    </div>
+    <div class="col-md-6 col-xs-12 right-display">
+      <div class="father2">
+          <div class="son">1</div>
+          <div class="son">2</div>
+          <div class="son">3</div>
+      </div>
     </div>
   </div>
-</div>
+  <div class="row flex-row">
+    <div class="col-md-6 col-xs-12 right-display">
+      <div class="father9">
+          <div class="son">1</div>
+          <div class="son">2</div>
+          <div class="son">3</div>
+      </div>
+    </div>
+    <div class="col-md-6 col-xs-12 right-display">
+      <div class="father10">
+          <div class="son">1</div>
+          <div class="son">2</div>
+          <div class="son">3</div>
+      </div>
+    </div>
+  </div>
 
-<div class="row flex-row">
-  <div class="col-md-6 col-xs-12 left-code">
-    .father{<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;justify-content: space-around;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;align-items:center;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;flex-direction:row-reverse;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;border:5px dashed white;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;height:400px;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;width:400px;<br/>
-        }<br/>
-        .son{<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;align-items:center;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;height:100px;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;border:2px solid white;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;width:100px;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;font-weight:bolder;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;font-size:16px;<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;color:white;<br/>
-        }
-  </div>
-  <div class="col-md-6 col-xs-12 right-display">
-    <div class="father3">
-        <div class="son">1</div>
-        <div class="son">2</div>
-        <div class="son">3</div>
+  <div class="row flex-row">
+    <div class="col-md-6 col-xs-12 left-code">
+      <h3>flex-direction:row-reverse</h3>
+      .father{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: space-around;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;flex-direction:row-reverse;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:5px dashed white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:400px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:400px;<br/>
+          }<br/>
+          .son{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:2px solid white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-weight:bolder;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-size:16px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;color:white;<br/>
+          }
+    </div>
+    <div class="col-md-6 col-xs-12 right-display">
+      <div class="father3">
+          <div class="son">1</div>
+          <div class="son">2</div>
+          <div class="son">3</div>
+      </div>
     </div>
   </div>
-</div>
+
+  <div class="row flex-row">
+    <div class="col-md-6 col-xs-12 left-code">
+      <h3>flex-wrap:nowrap</h3>
+      .father{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: space-around;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;flex-wrap:nowrap;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;flex-direction:row;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:5px dashed white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:400px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:400px;<br/>
+          }<br/>
+          .son{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:2px solid white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-weight:bolder;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-size:16px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;color:white;<br/>
+          }
+    </div>
+    <div class="col-md-6 col-xs-12 right-display">
+      <div class="father4">
+          <div class="son">1</div>
+          <div class="son">2</div>
+          <div class="son">3</div>
+          <div class="son">4</div>
+          <div class="son">5</div>
+          <div class="son">6</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row flex-row">
+    <div class="col-md-6 col-xs-12 left-code">
+      <h3>flex-wrap:wrap</h3>
+      .father{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: space-around;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;flex-wrap:wrap;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;flex-direction:row;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:5px dashed white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:400px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:400px;<br/>
+          }<br/>
+          .son{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:2px solid white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-weight:bolder;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-size:16px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;color:white;<br/>
+          }
+    </div>
+    <div class="col-md-6 col-xs-12 right-display">
+      <div class="father5">
+          <div class="son">1</div>
+          <div class="son">2</div>
+          <div class="son">3</div>
+          <div class="son">4</div>
+          <div class="son">5</div>
+          <div class="son">6</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row flex-row">
+    <div class="col-md-6 col-xs-12 left-code">
+      <h3>flex-wrap:wrap-reverse;</h3>
+      .father{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: space-around;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;flex-wrap:wrap-reverse;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;flex-direction:row;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:5px dashed white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:400px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:400px;<br/>
+          }<br/>
+          .son{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:2px solid white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-weight:bolder;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-size:16px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;color:white;<br/>
+          }
+    </div>
+    <div class="col-md-6 col-xs-12 right-display">
+      <div class="father6">
+          <div class="son">1</div>
+          <div class="son">2</div>
+          <div class="son">3</div>
+          <div class="son">4</div>
+          <div class="son">5</div>
+          <div class="son">6</div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
