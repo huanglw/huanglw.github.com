@@ -25,6 +25,17 @@
           height:100px;
           font-size:32px;
           color:white;
+          width:100%;
+        }
+        .row-right{
+          display:flex;
+          justify-content:flex-end;
+          align-items:center;
+          height:100px;
+          font-size:18px;
+          color:white;
+          width:100%;
+          padding-right:100px;
         }
         .father{
             display:flex;
