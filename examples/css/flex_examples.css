@@ -132,12 +132,75 @@
             height:400px;
             width:400px;
         }
+        .father12{
+            display:flex;
+            justify-content: space-around;
+            align-items:stretch;
+            flex-wrap:wrap-reverse;
+            flex-direction:row;
+            border:5px dashed white;
+            height:400px;
+            width:400px;
+            margin-bottom:2px;
+        }
+        .father13{
+            display:flex;
+            justify-content: space-between;
+            align-items:baseline;
+            flex-wrap:wrap-reverse;
+            flex-direction:row;
+            border:5px dashed white;
+            height:400px;
+            width:400px;
+        }
+        .father11{
+            display:flex;
+            justify-content: space-between;
+            align-items:center;
+            flex-wrap:wrap-reverse;
+            flex-direction:row;
+            border:5px dashed white;
+            height:400px;
+            width:400px;
+        }
         .son{
             display:flex;
             justify-content: center;
             align-items:center;
             backgound:green;
             height:100px;
+            border:10px solid white;
+            border-top-color:red;
+            border-bottom-color:red;
+            border-left-color:white;
+            border-right-color:white;
+            width:100px;
+            font-weight:bolder;
+            font-size:16px;
+            color:white;
+        }
+        .son1{
+            display:flex;
+            justify-content: center;
+            align-items:center;
+            backgound:green;
+            height:200px;
+            border:10px solid white;
+            border-top-color:red;
+            border-bottom-color:red;
+            border-left-color:white;
+            border-right-color:white;
+            width:100px;
+            font-weight:bolder;
+            font-size:16px;
+            color:white;
+        }
+        .son2{
+            display:flex;
+            justify-content: center;
+            align-items:center;
+            backgound:green;
+            height:300px;
             border:10px solid white;
             border-top-color:red;
             border-bottom-color:red;

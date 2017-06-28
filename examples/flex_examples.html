@@ -2,14 +2,14 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>flex</title>
+    <title>huanglw.github.io</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/flex_examples.css" type="text/css">
 </head>
 
 <body>
   <div class="row row-center">
-    关于flex布局父容器属性实例
+    flex布局父容器属性部分效果演示
   </div>
   <div class="row flex-row">
     <div class="col-md-6 col-xs-12 left-code">
@@ -270,6 +270,50 @@
           <div class="son">4</div>
           <div class="son">5</div>
           <div class="son">6</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row flex-row">
+    <div class="col-md-6 col-xs-12 left-code">
+      <h3>align-items:center/stretch/baseline</h3>
+      .father{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: space-around;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center/stretch/baseline;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;flex-wrap:wrap-reverse;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;flex-direction:row;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:5px dashed white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:400px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:400px;<br/>
+          }<br/>
+          .son{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:2px solid white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-weight:bolder;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-size:16px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;color:white;<br/>
+          }
+    </div>
+    <div class="col-md-6 col-xs-12 right-display">
+      <div class="father11">
+          <div class="son">1</div>
+          <div class="son1">2</div>
+          <div class="son2">3</div>
+      </div>
+      <div class="father12">
+          <div class="son">1</div>
+          <div class="son1">2</div>
+          <div class="son2">3</div>
+      </div>
+      <div class="father13">
+          <div class="son">1</div>
+          <div class="son1">2</div>
+          <div class="son2">3</div>
       </div>
     </div>
   </div>
