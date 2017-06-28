@@ -18,6 +18,14 @@
             background-size:
                             15px 15px, 15px 15px;
         }
+        .row-center{
+          display:flex;
+          justify-content:center;
+          align-items:center;
+          height:100px;
+          font-size:32px;
+          color:white;
+        }
         .father{
             display:flex;
             justify-content: space-around;
@@ -26,6 +34,7 @@
             border:5px dashed white;
             height:400px;
             width:400px;
+            margin-bottom:2px;
         }
         .father7{
             display:flex;
@@ -35,6 +44,7 @@
             border:5px dashed white;
             height:400px;
             width:400px;
+            margin-bottom:2px;
         }
         .father8{
             display:flex;
@@ -62,6 +72,7 @@
             border:5px dashed white;
             height:400px;
             width:400px;
+            margin-bottom:2px;
         }
         .father9{
             display:flex;
@@ -71,6 +82,7 @@
             border:5px dashed white;
             height:400px;
             width:400px;
+            margin-bottom:2px;
         }
         .father10{
             display:flex;
@@ -138,7 +150,7 @@
         }
         .left-code{
           display:flex;
-          justify-content: center;
+          justify-content: flex-start;
           align-items:center;
           flex-direction:column;
           color:white;
@@ -147,25 +159,19 @@
         .right-display{
           display:flex;
           margin-bottom:10px;
-          justify-content: center;
+          justify-content: flex-start;
           align-items:center;
+          flex-direction:column;
           color:white;
         }
         .flex-row{
           width:100%;
-          margin-top:30px;
-          padding-bottom:30px;
-          padding-top:30px;
+          margin-top:10px;
+          padding-bottom:10px;
+          padding-top:10px;
           
           /*border-bottom-style:dotted;
           border-bottom-color:white;
           border-bottom-width:2px;*/
         }
-        .row-center{
-          display:flex;
-          justify-content:center;
-          align-items:center;
-          height:100px;
-          font-size:24px;
-          color:white;
-        }
+        
