@@ -1,0 +1,248 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>huanglw.github.io</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/flex_subContainer.css" type="text/css">
+</head>
+
+<body>
+  <div class="row row-center">
+    flex布局子容器属性部分效果演示
+  </div>
+  <div class="row row-right">
+    <a href="https://huanglw.github.io">---huanglw</a>
+  </div>
+  <div class="row flex-row">
+    <div class="col-md-6 col-xs-12 left-code">
+      <h3>
+        flex-basis 表示在不伸缩的情况下子容器的原始尺寸。<br/>
+        主轴为横向时代表宽度，主轴为纵向时代表高度。<br/>
+        flex-basis:auto(auto为默认值)</h3>
+      .father{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: space-around;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center/flex-start/flex-end;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;flex-direction:column;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:5px dashed white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:400px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:400px;<br/>
+          }<br/>
+          .son{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;flex-basis:auto;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:2px solid white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-weight:bolder;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-size:16px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;color:white;<br/>
+          }
+    </div>
+    <div class="col-md-6 col-xs-12 right-display">
+      <div class="father">
+          <div class="son">1</div>
+          <div class="son">2</div>
+          <div class="son">3</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row flex-row">
+    <div class="col-md-6 col-xs-12 left-code">
+      <h3>
+        flex-basis:120px<br/>
+        每个子容器原始高度变成120px;
+      </h3>
+      .father{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: space-around;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center/flex-start/flex-end;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;flex-direction:column;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:5px dashed white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:400px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:400px;<br/>
+          }<br/>
+          .son{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;flex-basis:120px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:2px solid white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-weight:bolder;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-size:16px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;color:white;<br/>
+          }
+    </div>
+    <div class="col-md-6 col-xs-12 right-display">
+      <div class="father">
+          <div class="son1">1</div>
+          <div class="son1">2</div>
+          <div class="son1">3</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row flex-row">
+    <div class="col-md-6 col-xs-12 left-code">
+      <h3>
+        order:3/2/1;<br/>
+        order的值的顺序和子容器在文档中的顺序相反;
+      </h3>
+      .father{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: space-around;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center/flex-start/flex-end;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;flex-direction:column;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:5px dashed white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:400px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:400px;<br/>
+          }<br/>
+          .son{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;order:3/2/1;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:2px solid white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-weight:bolder;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-size:16px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;color:white;<br/>
+          }
+    </div>
+    <div class="col-md-6 col-xs-12 right-display">
+      <div class="father">
+          <div class="son2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<br/> order:3;</div>
+          <div class="son3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2<br/> order:3;</div>
+          <div class="son4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3<br/> order:3;</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row flex-row">
+    <div class="col-md-6 col-xs-12 left-code">
+      <h3>
+        align-self:flex-start/flex-end/center<br/>
+        自定义子容器的位置，默认值是auto,即继承父容器的align-items值
+      </h3>
+      .father{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: space-around;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center/flex-start/flex-end;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;flex-direction:column;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:5px dashed white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:400px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:400px;<br/>
+          }<br/>
+          .son{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;order:1;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-self:flex-start/flex-end/center/baseline/stretch;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:2px solid white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-weight:bolder;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-size:16px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;color:white;<br/>
+          }
+    </div>
+    <div class="col-md-6 col-xs-12 right-display">
+      <div class="father">
+          <div class="son5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<br/> flex-start</div>
+          <div class="son6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2<br/> flex-end</div>
+          <div class="son7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3<br/> center</div>
+          <!-- <div class="son8">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4<br/> baseline</div>
+          <div class="son9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5<br/> stretch</div> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="row flex-row">
+    <div class="col-md-6 col-xs-12 left-code">
+      <h3>
+        align-self:baseline<br/>
+        自定义子容器的位置，默认值是auto,即继承父容器的align-items值
+      </h3>
+      .father{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: space-around;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center/flex-start/flex-end;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;flex-direction:column;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:5px dashed white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:400px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:400px;<br/>
+          }<br/>
+          .son{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;order:1;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-self:baseline;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:2px solid white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-weight:bolder;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-size:16px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;color:white;<br/>
+          }
+    </div>
+    <div class="col-md-6 col-xs-12 right-display">
+      <div class="father">
+          <div class="son8">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<br/> baseline</div>
+          <div class="son">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2<br/> auto</div>
+          <div class="son">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3<br/> auto</div>
+          <!-- <div class="son8">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4<br/> baseline</div>
+          <div class="son9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5<br/> stretch</div> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="row flex-row">
+    <div class="col-md-6 col-xs-12 left-code">
+      <h3>
+        align-self:stretch<br/>
+        自定义子容器的位置，默认值是auto,即继承父容器的align-items值
+      </h3>
+      .father{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: space-around;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center/flex-start/flex-end;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;flex-direction:column;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:5px dashed white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:400px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:400px;<br/>
+          }<br/>
+          .son{<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-items:center;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;order:1;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;align-self:stretch;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;height:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;border:2px solid white;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;width:100px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-weight:bolder;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;font-size:16px;<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;color:white;<br/>
+          }
+    </div>
+    <div class="col-md-6 col-xs-12 right-display">
+      <div class="father">
+          <div class="son9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<br/> stretch</div>
+          <div class="son">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2<br/> auto</div>
+          <div class="son">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3<br/> auto</div>
+          <!-- <div class="son8">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4<br/> baseline</div>
+          <div class="son9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5<br/> stretch</div> -->
+      </div>
+    </div>
+  </div>
+</body>
+</html>
