@@ -26,6 +26,7 @@ $(document).ready(function(){
 	});  
 });
 
+
 // function ad_hide(){
 // 	//$("#advertise").hide();
 // 	swal.close();
