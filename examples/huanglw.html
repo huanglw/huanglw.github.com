@@ -2,31 +2,146 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>flex实现个人首页</title>
+    <title>huanglw的个人首页</title>
     <link rel="stylesheet" href="css/huanglw.css" type="text/css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 </head>
 
 <body>    
-    <div class="level-1 bg-black">
+    <div class="level-1 bg-black height-100per">
         <div class="header">
             huanglw
         </div>
         <div class="content">
             <div class="title">I'M A Front-end Developer</div>
-            <div class="sub-title">I'm from JiangXi NanChang graduated from NanChang University</div>
+            <div class="sub-title"><p id="date"></p></div>
         </div>
         <div class="nav">
-            <span class="nav-item">WORK</span> | <span class="nav-item">RESUME</span> | <span class="nav-item">ABOUT</span>
+            <span class="nav-item"><a href="#work">WORK</a></span> | 
+            <span class="nav-item"><a href="#resume">RESUME</a></span> | 
+            <span class="nav-item"><a href="#about">ABOUT</a></span>
         </div>
     </div>
-    <div class="level-1">
-        About my work
+    <div id="work" class="level-1 justify-start border-bottom-line">
+        <div class="row">
+            <div class="col-12 col-xs-12 align-justify-center font-size-3vw padding-top-bottom">About my work</div>
+            <div class="col-md-6 col-xs-12 align-justify-center">
+                <div class="list-group width-100per no-border-radius">
+                  <a href="#" class="list-group-item disabled">
+                    front-end developer
+                  </a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-11</span>Dapibus ac facilisis in</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-10</span>Morbi leo risus</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-09</span>Porta ac consectetur ac</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-08</span>Vestibulum at eros</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-11</span>Dapibus ac facilisis in</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-10</span>Morbi leo risus</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-09</span>Porta ac consectetur ac</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-08</span>Vestibulum at eros</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-11</span>Dapibus ac facilisis in</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-10</span>Morbi leo risus</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-xs-12 align-justify-center">
+                 <div class="list-group width-100per no-border-radius">
+                  <a href="#" class="list-group-item disabled">
+                    Cras justo odio
+                  </a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-11</span>Dapibus ac facilisis in</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-10</span>Morbi leo risus</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-09</span>Porta ac consectetur ac</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-08</span>Vestibulum at eros</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-11</span>Dapibus ac facilisis in</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-10</span>Morbi leo risus</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-09</span>Porta ac consectetur ac</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-08</span>Vestibulum at eros</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-11</span>Dapibus ac facilisis in</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-10</span>Morbi leo risus</a>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="level-1">
-        Show my resume
+    <div id="resume" class="level-1 border-bottom-line">
+         <div class="row">
+            <div class="col-12 col-xs-12 align-justify-center font-size-3vw padding-top-bottom">Show my resume</div>
+            <div class="col-md-6 col-xs-12 align-justify-center">
+                <div class="list-group width-100per no-border-radius">
+                  <a href="#" class="list-group-item disabled">
+                    front-end developer
+                  </a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-11</span>Dapibus ac facilisis in</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-10</span>Morbi leo risus</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-09</span>Porta ac consectetur ac</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-08</span>Vestibulum at eros</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-11</span>Dapibus ac facilisis in</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-10</span>Morbi leo risus</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-09</span>Porta ac consectetur ac</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-08</span>Vestibulum at eros</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-11</span>Dapibus ac facilisis in</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-10</span>Morbi leo risus</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-xs-12 align-justify-center">
+                 <div class="list-group width-100per no-border-radius">
+                  <a href="#" class="list-group-item disabled">
+                    Cras justo odio
+                  </a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-11</span>Dapibus ac facilisis in</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-10</span>Morbi leo risus</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-09</span>Porta ac consectetur ac</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-08</span>Vestibulum at eros</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-11</span>Dapibus ac facilisis in</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-10</span>Morbi leo risus</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-09</span>Porta ac consectetur ac</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-08</span>Vestibulum at eros</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-11</span>Dapibus ac facilisis in</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-10</span>Morbi leo risus</a>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="level-1">
-        About my experience and education
+    <div id="about" class="level-1">
+         <div class="row">
+            <div class="col-12 col-xs-12 align-justify-center font-size-3vw padding-top-bottom">work and experience</div>
+            <div class="col-md-6 col-xs-12 align-justify-center">
+                <div class="list-group width-100per no-border-radius">
+                  <a href="#" class="list-group-item disabled">
+                    front-end developer
+                  </a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-11</span>Dapibus ac facilisis in</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-10</span>Morbi leo risus</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-09</span>Porta ac consectetur ac</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-08</span>Vestibulum at eros</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-11</span>Dapibus ac facilisis in</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-10</span>Morbi leo risus</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-09</span>Porta ac consectetur ac</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-08</span>Vestibulum at eros</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-11</span>Dapibus ac facilisis in</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-10</span>Morbi leo risus</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-xs-12 align-justify-center">
+                 <div class="list-group width-100per no-border-radius">
+                  <a href="#" class="list-group-item disabled">
+                    Cras justo odio
+                  </a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-11</span>Dapibus ac facilisis in</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-10</span>Morbi leo risus</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-09</span>Porta ac consectetur ac</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-08</span>Vestibulum at eros</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-11</span>Dapibus ac facilisis in</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-10</span>Morbi leo risus</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-09</span>Porta ac consectetur ac</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-08</span>Vestibulum at eros</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-11</span>Dapibus ac facilisis in</a>
+                  <a href="#" class="list-group-item"><span class="badge">2017-07-10</span>Morbi leo risus</a>
+                </div>
+            </div>
+        </div>
     </div>    
+
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.smooth-scroll.js"></script>
+    <script src="js/huanglw.js"></script>
 </body>
 </html>
