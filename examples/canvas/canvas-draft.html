@@ -41,7 +41,11 @@
     },500);
     //i:表示横坐标
     var i = 0;
-
+    var lon01 = 0;
+    var lat01 = 50;
+    var lon02 = 50;
+    var lat02 = 250;
+    
     function run(ctx){
       console.log("i:"+i);
       //条件限制
@@ -54,13 +58,14 @@
         window.clearInterval(timer);
         break;
       }
-      var lon = Math.random()*500;
-      var lat = Math.random()*500;
-      ctx.lineTo(lon,lat);
+      
+      ctx.quadraticCurveTo(lon01,lat01,lon02,lat02);
       ctx.strokeStyle = "#ffffff";
       ctx.stroke();
       ctx.fillStyle = "#ffffff";
       i = i+1;
+      lon01 += 50;
+      lon02 += 50;
         
     }
     //-------------结束----------替换上面的代码，生成动画效果

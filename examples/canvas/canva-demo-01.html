@@ -40,23 +40,26 @@
     },100);
     //i:表示横坐标
     var i = 0;
-    
 
     function run(ctx){
       console.log("i:"+i);
-      //限制条件
-      if(i == 50 && i>50){
+      //条件限制
+      if(i==50){
+        console.log("lllll");
         window.clearInterval(timer);
-        console.log("i>=50::"+i);
-      }else{
-        var lon = 3*i;
-        var lat = 250+Math.sin(i/10)*100;
-        ctx.lineTo(lon,lat);
-        ctx.strokeStyle = "#0000ff";
-        ctx.stroke();
-        ctx.fillStyle = "#0000ff";
-        i = i+1;
       }
+      //限制条件
+      // while(i==160){
+      //   window.clearInterval(timer);
+      // }
+      var lon = 3*i;
+      var lat = 250+Math.sin(i/10)*100;
+      ctx.lineTo(lon,lat);
+      ctx.strokeStyle = "#0000ff";
+      ctx.stroke();
+      ctx.fillStyle = "#0000ff";
+      i = i+1;
+        
     }
     //-------------结束----------替换上面的代码，生成动画效果
 
