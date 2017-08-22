@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas实现圆周运动</title>
+    
+</head>
+<body>
+    <canvas id="canvas">你的浏览器不支持canvas，请跟换其他浏览器试一试</canvas>
+    <button id="runBall">Click Here</button>
+    <script type="text/javascript">
+        window.onload=function(){
+            var canvas=document.getElementById('canvas');
+            canvas.height=728;
+            canvas.width=1024;
+            var context=canvas.getContext('2d');
+            //绘制不动的元素：运行轨道和中间红色的圆
+            //drawNotChange(context);
+            /*
+             * 绘制蓝色运动的圆---开始
+             */
+            context.fillStyle='blue';
+            context.beginPath();
+            context.arc(500,550,30,0,2*Math.PI,true);
+            context.closePath();
+            context.fill();
+
+            var button = document.getElementById("runBall");
+            button.onclick = run(context);
+            /*
+             * 绘制蓝色运动的圆---结束
+             */
+            //stroke()是画线，fill()包括填充内容
+            //context.stroke();
+            //设置定时器让蓝色的小球运动起来
+            setInterval(function(){
+                run(context);
+            }, 500);
+        };
+
+        var time=0;//定义运动的执行次数
+        function run(cxt){
+            console.log("click");
+            //清除以（0,0）为起点坐标，宽高分别为1024像素和728像素的矩形。
+            cxt.clearRect(0,0,1024,728);   
+            drawNotChange(cxt);
+            cxt.save();//将当前以左上角坐标为(0,0)的上下文环境进行保存，这样是为了在接下来中要进行画布偏移后，可以进行还原当前的环境
+            //将画布原点移动到了（500,400）
+            cxt.translate(500,400); 
+            cxt.rotate(time*8*Math.PI/180);//设定每次旋转的度数
+            cxt.fillStyle='blue';
+            cxt.beginPath();
+            cxt.arc(0,150,30,0,4*Math.PI,false);
+            cxt.closePath();
+            cxt.fill();
+            cxt.restore();//将当前为(500,400)的点还原为（0,0）,其实在save中就是将上下文环境保存到栈中，在restore下面对其进行还原
+            time+=1;
+        }
+
+        //绘制不变因素
+        function drawNotChange(context){ 
+            //开始画中心红色小球
+            context.fillStyle='red';
+            context.beginPath();
+            context.arc(500,400,30,0,2*Math.PI,true);
+            context.closePath();
+            context.fill();
+
+            //开始画运行轨迹
+            context.beginPath();
+            context.arc(500,400,150,0,2*Math.PI,true);
+            context.closePath();
+            context.stroke();
+
+            //开始画黑色的小球
+            context.beginPath();
+            context.arc(500 ,600,20,0,2*Math.PI,true);
+            context.closePath();
+            context.stroke();
+        }
+    </script>
+</body>
+</html>

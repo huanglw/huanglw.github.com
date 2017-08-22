@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas实现旋转</title>
+    
+</head>
+<body>
+    <canvas id="canvas" width="1300" height="800">你的浏览器不支持canvas，请跟换其他浏览器试一试</canvas>
+    
+    <script type="text/javascript">
+        window.onload=function(){
+            var canvas=document.getElementById('canvas');
+            var context=null;
+            if(canvas.getContext){
+                context = canvas.getContext("2d");
+            }
+            
+           // context.beginPath();
+           // context.rect(0,0,200,100);
+           // context.closePath();
+           // context.fillStyle = "#ccc";
+           // context.fill();   
+
+           /*
+            * 1、旋转是针对当前的路径而言
+            * 2、rotate()对应的旋转中心是原点
+            * 3、translate()可以改变当前路径参照的原点
+            */
+
+           context.translate(550,320);
+           for(var i =0; i<30; i++){
+               context.beginPath();
+               //以原点为旋转中心
+               context.rotate(i*Math.PI / 180);
+               context.rect(250,0,50,50);
+               context.closePath();
+               context.fillStyle = "#000000";
+               context.fill();
+           }
+
+           //context.translate(600,320);
+           for(var i =0; i<30; i++){
+               context.beginPath();
+               //以原点为旋转中心
+               context.rotate(i*Math.PI / 180);
+               context.rect(200,0,50,50);
+               context.closePath();
+               context.fillStyle = "#0000ff";
+               context.fill();
+           }
+
+           for(var i =0; i<30; i++){
+               context.beginPath();
+               //以原点为旋转中心
+               context.rotate(i*Math.PI / 180);
+               context.rect(150,0,50,50);
+               context.closePath();
+               context.fillStyle = "#00ff00";
+               context.fill();
+           }
+
+           for(var i =0; i<30; i++){
+               context.beginPath();
+               //以原点为旋转中心
+               context.rotate(i*Math.PI / 180);
+               context.rect(100,0,50,50);
+               context.closePath();
+               context.fillStyle = "#ff0000";
+               context.fill();
+           }
+
+           for(var i =0; i<30; i++){
+               context.beginPath();
+               //以原点为旋转中心
+               context.rotate(i*Math.PI / 180);
+               context.rect(50,0,50,50);
+               context.closePath();
+               context.fillStyle = "#ff00ff";
+               context.fill();
+           }
+
+           for(var i =0; i<30; i++){
+               context.beginPath();
+               //以原点为旋转中心
+               context.rotate(i*Math.PI / 180);
+               context.rect(0,0,50,50);
+               context.closePath();
+               context.fillStyle = "#ffffff";
+               context.fill();
+           }
+
+           for(var i =0; i<30; i++){
+               context.beginPath();
+               //以原点为旋转中心
+               context.rotate(i*Math.PI / 180);
+               context.rect(0,0,30,30);
+               context.closePath();
+               context.fillStyle = "#ffff00";
+               context.fill();
+           }
+
+        };
+
+        
+    </script>
+</body>
+</html>

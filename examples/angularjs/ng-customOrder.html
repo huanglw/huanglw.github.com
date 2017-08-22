@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>angularjs---自定义指令</title>
+<script src="https://cdn.bootcss.com/angular.js/1.4.6/angular.min.js"></script> 
+</head>
+<body ng-app="myApp">
+ 
+<div runoob-directive></div>
+<runoob-directive></runoob-directive>
+        <huanglw></huanglw>
+        <div huanglw></huanglw>
+ 
+<script>
+var app = angular.module("myApp", []);
+app.directive("runoobDirective", function() { 
+    return {
+        template : "<h1>自定义指令!</h1>"
+    };
+});
+app.directive("huanglw",function(){
+        return {
+                template:"<h3 style='color:red;'>----huanglw</h3>"
+        };
+});
+</script>
+ 
+</body>
+</html>

@@ -6,5 +6,5 @@ function getDate(){
 	var localDate = new Date();
 	//$("#date").innerHTML = localDate.toLocaleDateString();
 	//document.getElementById("date").innerHTML = localDate.toDateString();
-	document.getElementById("date").innerHTML = localDate.toGMTString();
+	document.getElementById("date").innerHTML = localDate.toDateString(); 
 }

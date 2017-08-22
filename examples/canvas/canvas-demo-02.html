@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>canvas demo-02</title>
+</head>
+
+<body>
+	<canvas id="drawing" width="1000" height="500">This is a canvas</canvas>
+</body>
+
+<script type="text/javascript">
+  var drawing = document.getElementById("drawing");
+  if(drawing.getContext){
+    //获取canvas的上下文
+    var context = drawing.getContext('2d');
+    //到现在为止canvas里面还是没有东西的
+    //如果需要在canvas中画东西获取上下文之后，进行下面的操作
+    context.moveTo(0,250);
+    context.strokeRect(0,0,1000,500);
+    for(var i =0; i<1000; i++){
+      var lon = Math.random()*500;
+      var lat = Math.random()*500;
+      context.lineTo(lon,lat); 
+      //drawingDelay(context);
+      console.log(i); 
+      
+    }
+    context.strokeStyle = "#0000ff";
+    context.stroke();
+    context.fillStyle = "#0000ff";
+  }else{
+    console.log("Browser is not supported!");
+  }
+
+</script>
+
+</html>

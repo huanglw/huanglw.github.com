@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+         
+    <input type="button"  id="animatebutton" value="animate" />
+    <canvas id="canvas" width="1050" height="500"></canvas>
+    </body>
+    <script type="text/javascript">
+        var canvas = document.getElementById('canvas'),
+        cx= canvas.getContext('2d'),
+        paused = true ,
+        discs = [
+        {
+            x:150,
+            y:250,
+            velocityx:-3.2,
+            velocityy:3.5,
+            radius:25,
+            strokestyle:'gray',
+        },
+        {
+            x:50,
+            y:150,
+            velocityx:2.2,
+            velocityy:2.5,
+            radius:25,
+            strokestyle:'blue',
+        },
+        {
+            x:150,
+            y:75,
+            velocityx:1.2,
+            velocityy:1.5,
+            radius:25,
+            strokestyle:'orange',
+        },
+        ],
+ 
+        //numdiscs = discs.length,
+        animatebutton = document.getElementById('animatebutton');
+
+        //定义Ball对象
+        function Ball(x,y,vx,vy,radius,color){
+          this.x = x;
+          this.y = y;
+          this.velocityx = vx;
+          this.velocityy = vy;
+          this.radius = radius;
+          this.strokestyle = color;
+        }
+
+        //一个存储颜色的数组
+        var colors = ["red","orange","yellow","green","grey","blue","purple"];
+
+        //创建ball并且放进数组里面
+        for(var i=0; i<50; i++){
+          var lon = Math.random()*750;
+          var lat = Math.random()*500;
+          var vx = Math.random()*10;
+          var vy = Math.random()*10;
+          var num = Math.random()*6;
+          num = Math.ceil(num);
+          console.log("color:"+colors[num]);
+          var ball = new Ball(lon,lat,vx,vy,25,colors[num]);
+          discs.push(ball);
+        }
+         
+        function update(){
+            var disc = null;
+            console.log("aaaaaa:"+discs.length);
+            for(var i=0;i<discs.length;i++)
+            {
+                disc = discs[i];
+                if(disc.x +disc.velocityx+disc.radius > cx.canvas.width || disc.x + disc.velocityx -disc.radius<0)
+                disc.velocityx = -disc.velocityx;
+                if(disc.y +disc.velocityy+disc.radius > cx.canvas.height || disc.y + disc.velocityy -disc.radius<0)
+                disc.velocityy = -disc.velocityy;
+                disc.x+=disc.velocityx;
+                disc.y+=disc.velocityy;
+            }
+        }
+         
+        function draw(){
+            var disc = discs[i];
+            for(var i=0;i<discs.length;i++)
+            {
+                disc = discs[i];
+                 
+                cx.save();
+                //beginPath()开始画一条线
+                cx.beginPath();
+                cx.arc(disc.x,disc.y,disc.radius,0, Math.PI*2,false);
+                cx.fillStyle=disc.strokestyle;
+                cx.fill();
+                //cx.stroke();
+                cx.restore();
+            }
+        }
+        function animate(){
+            if(!paused){
+                cx.clearRect(0,0,canvas.width,canvas.height);
+                 
+                update();
+                draw();
+                window.requestAnimationFrame(animate);
+            }
+        }
+         
+        animatebutton.onclick = function (){
+            paused = paused? false:true;
+            if(paused){
+                animatebutton.value = "animate";
+                 
+            }
+            else{
+                window.requestAnimationFrame(animate);
+                animatebutton.value = "pause";
+            }
+        }
+    </script>
+</html>

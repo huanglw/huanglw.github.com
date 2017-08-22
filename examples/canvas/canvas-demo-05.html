@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas实现圆周运动</title>
+    
+</head>
+<body>
+    <canvas id="canvas" width="600" height="400">你的浏览器不支持canvas，请跟换其他浏览器试一试</canvas>
+    
+    <script type="text/javascript">
+        window.onload=function(){
+            var canvas=document.getElementById('canvas');
+            var context=null;
+            if(canvas.getContext){
+                context = canvas.getContext("2d");
+            }
+            
+            var image = new Image();
+            image.onload = function(){
+                //把加载完的图像绘制到画布上
+                context.drawImage(image,100,100);
+            }         
+        };
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas实现科赫雪花</title>
+    
+</head>
+<body>
+    <canvas id="canvas" width="1200" height="400"><h3>你的浏览器不支持canvas，请跟换其他浏览器试一试</h3></canvas>
+    
+    <script type="text/javascript">
+        window.onload=function(){
+            var canvas=document.getElementById('canvas');
+            var deg = Math.PI/180;
+            var context=null;
+            var i = 0;
+            if(canvas.getContext){
+                context = canvas.getContext("2d");
+            }
+            
+            var timer = window.setInterval(function(){
+                run(context);
+            }, 50);
+
+            function run(ctx){
+                //ctx.save();
+                var x = 5;
+                var y = 5;
+                i = i+1;
+                if(i>=78 && i<150){
+                    ctx.translate(x,-y);
+                    ctx.fillRect(10,10,5,5);
+                    console.log("x:"+x);
+                }else if(i == 180){
+                    window.clearInterval(timer);
+                }else{
+                    ctx.translate(x,y);
+                    ctx.fillRect(10,10,5,5);
+                    console.log("y:"+y);
+                }
+                
+            }
+            // context.fillRect(10,10,50,50);
+            // context.translate(0,70);
+            // context.fillRect(10,10,100,50);
+            // context.translate(0,70);
+            // context.rotate(20*Math.PI/180);
+            // context.fillRect(10,10,100,50);
+  
+        };
+
+        
+        
+    </script>
+</body>
+</html>
