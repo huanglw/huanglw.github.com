@@ -4,23 +4,23 @@
 	<meta charset="utf-8">
 	<title>canvas demo-02</title>
   <style>
-    #drawing{background:black;}
+    #drawing01{background:black;}
   </style>
 </head>
 
 <body>
-	<canvas id="drawing" width="500" height="500">This is a canvas</canvas>
+	<canvas id="drawing01" width="1500" height="250">This is a canvas</canvas>
 </body>
 
 <script type="text/javascript">
-  var drawing = document.getElementById("drawing");
+  var drawing = document.getElementById("drawing01");
   if(drawing.getContext){
     //获取canvas的上下文
     var context = drawing.getContext('2d');
     //到现在为止canvas里面还是没有东西的
     //如果需要在canvas中画东西获取上下文之后，进行下面的操作
-    context.moveTo(0,250);
-    context.strokeRect(0,0,500,500);
+    context.moveTo(0,150);
+    context.strokeRect(0,0,1500,250);
 
 
     // for(var i =0; i<1000; i++){
@@ -38,14 +38,14 @@
     //------------开始--------------替换上面的代码，生成动画效果
     var timer = window.setInterval(function(){
       run(context);
-    },500);
+    },400);
     //i:表示横坐标
     var i = 0;
-    var lon01 = 0;
+    var lon01 = 50;
     var lat01 = 50;
-    var lon02 = 50;
-    var lat02 = 250;
-    
+    var lon02 = 100;
+    var lat02 = 150;
+
     function run(ctx){
       console.log("i:"+i);
       //条件限制
@@ -64,8 +64,13 @@
       ctx.stroke();
       ctx.fillStyle = "#ffffff";
       i = i+1;
-      lon01 += 50;
-      lon02 += 50;
+      lon01 += 100;
+      lon02 += 100;
+      if(i%2==0){
+        lat01 -= 200;
+      }else{
+        lat01 += 200;
+      }
         
     }
     //-------------结束----------替换上面的代码，生成动画效果

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>canvas根据文件或者数组数据来绘图</title>
+</head>
+
+<body>
+	<canvas id="drawing" width="1000" height="500">This is a canvas</canvas>
+</body>
+
+<script type="text/javascript">
+  var drawing = document.getElementById("drawing");
+  if(drawing.getContext){
+    //获取canvas的上下文
+    var context = drawing.getContext('2d');
+    //到现在为止canvas里面还是没有东西的
+    //如果需要在canvas中画东西获取上下文之后，进行下面的操作
+    context.moveTo(10,10);
+    context.strokeRect(0,0,1000,500);
+     //设置字体样式
+    context.font = "30px Courier New";
+    //设置字体填充颜色
+    context.fillStyle = "blue";
+    //从坐标点(50,50)开始绘制文字
+    context.fillText("测试是否可以读取json数据的点坐标来进行绘制！", 120, 50);
+    var points = [{lon:10,lat:10},{lon:10,lat:110},{lon:10,lat:60},{lon:60,lat:60},{lon:60,lat:10},{lon:60,lat:110}];
+
+    /**
+     * 注释代码，由下面代码替换
+     */
+    // for(var i =0; i<1000; i++){
+    //   var lon = 3*i;
+    //   var lat = 250+Math.sin(i/10)*100;
+    //   context.lineTo(lon,lat);
+    // }
+    // context.strokeStyle = "#0000ff";
+    // context.stroke();
+    // context.fillStyle = "#0000ff";
+    /**
+     * 注释代码，由下面代码替换
+     */
+
+    //------------开始--------------替换上面的代码，生成动画效果
+    var timer = window.setInterval(function(){
+      run(context);
+    },100);
+    //i:表示横坐标
+    var i = 0;
+
+    function run(ctx){
+      console.log("i:"+i);
+      //条件限制
+      if(i==points.length-1){
+        window.clearInterval(timer);
+      }
+      //限制条件
+      // while(i==160){
+      //   window.clearInterval(timer);
+      // }
+      var lon = points[i].lon;
+      var lat = points[i].lat;
+      ctx.lineTo(lon,lat);
+      ctx.strokeStyle = "#0000ff";
+      ctx.stroke();
+      ctx.fillStyle = "#0000ff";
+      i = i+1;
+        
+    }
+    //-------------结束----------替换上面的代码，生成动画效果
+
+  }else{
+    console.log("Browser is not supported!");
+  }
+</script>
+
+</html>
