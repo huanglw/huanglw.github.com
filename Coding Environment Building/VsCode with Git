@@ -1,3 +1,17 @@
 ### installation of vscode
 
 ### installation of git
+## add username and email
+git config --global user.email "1289054631@qq.com"
+git config --global user.name "huanglw"
+
+## excuting the next 6 commands to try to commit to github
+
+echo "# C-Tests" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/huanglw/huanglw.github.com.git
+git push -u origin master
+## when excuting the last command there will alert a window which you can enter the username
+and password of github (the vscode version is 1.24)
