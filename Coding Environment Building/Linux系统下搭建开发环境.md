@@ -30,3 +30,14 @@
 
 ### 命令行下载BT和磁力链接
 https://www.cnblogs.com/asmer-stone/p/5207591.html
+
+### 远程连接工具
+> 免费的连接工具
+
+- ssh连接工具Putty.exe
+- 文件传输pscp.exe
+用法：pscp [本地文件路径] 用户名@LinuxIp:目录    
+```
+# 上传D盘下的Mysql-5.6.19.rpm 到114.67.157.80服务器的/usr/local/software/路径下
+$ pscp D:\Mysql-5.6.19.rpm root@114.67.157.80:/usr/local/software/
+```
