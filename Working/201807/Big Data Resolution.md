@@ -100,5 +100,45 @@ public static boolean writeFileContent(String filepath,String newstr) throws IOE
 
 
 ### 多线程的实现
+> 一个简单的例子：三个线程同时启动读取三个文件里的两个数字，分别计算出结果。
+
+> 实现一个简单的文件拆分：保证数据的完整性，把文件拆分成多个小文件。
+
 
 ### 文件的读写、拆分
+> 文件拆分代码:源数据文件一共有2745963行数据，并且每三行数据为一个整体，为了保证拆分之后数据的完整性，每个拆分的小文件的行数必须是3的倍数。2745963行数据一共是915321条完整的数据，所以暂定的策略分为十个小文件，前九个文件都是100000条数据，也就是300000行数据，最后一个文件为15321条数据45963行数据。
+```
+//拆分文件breakFile
+    @Test
+    public void breakFile() {
+    		 
+        try {
+            FileReader read = new FileReader("D:/HTPHY/Electron/CSES_20180621045938_20180622043948.txt");
+            BufferedReader br = new BufferedReader(read);
+            String row;
+ 
+            int rownum = 0;
+ 
+            int fileNo = 1;
+            FileWriter fw = new FileWriter("D:/HTPHY/Electron/text"+fileNo +".txt");
+            while ((row = br.readLine()) != null) {
+                rownum ++;
+                fw.append(row + "\r\n");
+ 
+                if((rownum / 300000) > (fileNo - 1)){
+                    fw.close();
+                    fileNo ++ ;
+                    fw = new FileWriter("D:/HTPHY/Electron/text"+fileNo +".txt");
+                }
+            }
+            fw.close();
+            System.out.println("rownum="+rownum+";fileNo="+fileNo);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+```
+> 运行之后查看拆分的文件发现每个文件行数都比计算的行数最后多出一个空白行，分析代码可以发现是因为fw.append(row + "\r\n");这行拼接代码最后都会多一个换行符。
