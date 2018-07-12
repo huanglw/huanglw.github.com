@@ -148,3 +148,81 @@ public static boolean writeFileContent(String filepath,String newstr) throws IOE
 #### 还存在的问题
 - 电脑只有4核，能同时开启十个线程同时工作吗？
 - 虽然能同时解析文件，但是在写入文件的时候存在前后顺序，这个怎么解决？
+多线程同时对同一个文件做写入操作的时候，出现数据丢失、覆盖等现象。针对这个问题，先实现两个文件同时对统一文件的顺序写入操作。（加同步锁）
+#### 开启10个线程
+
+#### synchronized实现同步锁（互斥锁）
+> 目的：保证多线程情况下，同一时间之后一个线程对同一个文件进行写操作。
+
+#### 文件锁了解一下
+> 加文件锁，多线程同时写入同一个文件的简单实现，代码如下：
+**写文件的线程**
+```
+public class Thread_writeFile extends Thread {
+	private String inContent;
+	public Thread_writeFile(String writeContent) {
+		this.inContent = writeContent;
+	}
+    public void run(){
+        Calendar calstart=Calendar.getInstance();
+        File file=new File("D:/HTPHY/Electron/calData.txt");        
+        try {
+            if(!file.exists())
+                file.createNewFile();
+                        
+            //对该文件加锁
+            RandomAccessFile out = new RandomAccessFile(file, "rw");
+            FileChannel fcout=out.getChannel();
+            FileLock flout=null;
+            while(true){  
+                try {
+                	flout = fcout.tryLock();
+					break;
+				} catch (Exception e) {
+					 System.out.println("write:有其他线程正在操作该文件，当前线程休眠1000毫秒"); 
+					 sleep(1000);  
+				}
+				
+            }
+        
+            for(int i=1;i<=100;i++){
+                sleep(10);
+                StringBuffer sb=new StringBuffer();
+                System.out.println(this.inContent+"正在写入文件！");
+                sb.append(this.inContent+":这是第"+i+"行，应该没啥错哈\r\n");
+                out.write(sb.toString().getBytes("utf-8"));
+            }
+            
+            flout.release();
+            fcout.close();
+            out.close();
+            out=null;
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Calendar calend=Calendar.getInstance();
+        System.out.println("写文件共花了"+(calend.getTimeInMillis()-calstart.getTimeInMillis())+"秒");
+    }
+}
+```
+**测试代码**
+```
+public class Test {
+	public static void main(String[] args) {
+	    Thread_writeFile thf3=new Thread_writeFile("thf3");  
+	    Thread_writeFile thf2=new Thread_writeFile("thf2");
+        //Thread_readFile thf4=new Thread_readFile();  
+        thf2.start();
+        thf3.start();  
+        //thf4.start();  
+        
+ 
+	}
+}
+````
+
+开启10个线程，解析数据并分类写入到对应文件中，读文件不用加锁，但是写文件的时候需要加锁。
+#### 实现一下js加载本地json文件
+> 考虑是否通过后端加载数据，如果前端能直接读取（此方法不通，因为文件是放在服务器上的，无法通过客户端拿到数据）
