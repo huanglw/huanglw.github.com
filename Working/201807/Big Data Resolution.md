@@ -190,6 +190,10 @@ public class Thread_writeFile extends Thread {
                 StringBuffer sb=new StringBuffer();
                 System.out.println(this.inContent+"正在写入文件！");
                 sb.append(this.inContent+":这是第"+i+"行，应该没啥错哈\r\n");
+                 // 文件长度，字节数
+                long fileLength = out.length();
+                //将写文件指针移到文件尾。在文件内容之后追加
+                out.seek(fileLength);
                 out.write(sb.toString().getBytes("utf-8"));
             }
             
@@ -218,11 +222,303 @@ public class Test {
         thf3.start();  
         //thf4.start();  
         
- 
 	}
 }
 ````
+> 基于上面的代码实现线程读文件和写文件，但是发现：统一线程读写文件出现问题，代码如下
+```
+public class Thread_writeFile extends Thread {
+	//源文件路径
+	private String sourceFile;
+	
+	//构造方法
+	public Thread_writeFile(String sourceFilePath) {
+		this.sourceFile = sourceFilePath;
+	}
+	
+	//文件写入的方法
+	public void writeFile(String path, String content) {
+		System.out.println("写入方法");
+		Calendar calstart=Calendar.getInstance();
+        File file=new File(path);        
+        try {
+        	System.out.println("写入方法try语句");
+            if(!file.exists())
+                file.createNewFile();
+                        
+            //对该文件加锁
+            RandomAccessFile out = new RandomAccessFile(file, "rw");
+            System.out.println("加锁1");             
+            FileChannel fcout =out.getChannel(); //卡在这里，代码不再往下走
+            System.out.println("加锁2");
+            FileLock flout=null;            
+            while(true){  
+                try {
+                	flout = out.getChannel().tryLock();
+					break;
+				} catch (Exception e) {
+					 System.out.println("write:有其他线程正在操作该文件，当前线程休眠1000毫秒"); 
+					 sleep(1000);  
+				}
+				
+            }
+            // 文件长度，字节数
+            long fileLength = out.length();
+            //将写文件指针移到文件尾。
+            out.seek(fileLength);
+            out.write(content.toString().getBytes("utf-8"));
+            
+            flout.release();
+            fcout.close();
+            out.close();
+            out=null;
+            System.out.println("while语句结束");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Calendar calend=Calendar.getInstance();
+        System.out.println("写文件共花了"+(calend.getTimeInMillis()-calstart.getTimeInMillis())+"毫秒");
+	}
+	
+	//线程运行代码
+    public void run(){
+    	//编写自己的线程代码
+		System.out.println("The file path is:"+ this.sourceFile);
+		String filePath = this.sourceFile;
+		File file = new File(filePath);
+		BufferedReader br = null;
+		
+		try {
+			br = new BufferedReader(new FileReader(file));
+			String strLine01 = br.readLine();
+			String strLine02 = br.readLine();
+			String strLine03 = br.readLine();
+			String[] packageTime = strLine01.split(",");
+			String writeLine = packageTime[0]+"+++++++"+strLine01+"\r\n"+strLine03;
+			System.out.println("这里是文件："+filePath+"的数据："+writeLine);
+			//数据写入文件
+			
+			//创建一个新文件夹，并且在新的文件夹下新建文件
+			//然后往文件里写入数据
+			File dir = new File("D:/HTPHY/Electron/"+strLine01.substring(0, 4));
+			File newFile = new File("D:/HTPHY/Electron/"+strLine01.substring(0, 4)+"/newFile.txt");
+			if(!dir.exists()) {
+				dir.mkdir();
+			}
+
+			if(!newFile.exists()) {
+				newFile.createNewFile();
+			}		
+			br.close();
+			//写入文件
+			writeFile("D:/HTPHY/Electron/calData.txt",writeLine);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println("文件不存在！");
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("IO异常！");
+			e.printStackTrace();
+		}
+    }
+}
+```
+**FileChannel fcout =out.getChannel(); //卡在这里，代码不再往下走**存在这个问题，所以考虑读文件和写文件各用一个线程。
+**问题：**为什么线程不可以用@Test测试方法直接测试
 
 开启10个线程，解析数据并分类写入到对应文件中，读文件不用加锁，但是写文件的时候需要加锁。
+#### 读取解析文件测试版本
+线程1：读文件的线程，线程通过构造函数可以传入读取源文件路径sourceFile参数，通过这个参数实例化一个线程。代码如下：
+```
+public class Thread_readFileTest extends Thread {
+	private String sourceFile;
+	
+	//构造函数
+	public Thread_readFileTest(String sourcePath) {
+		this.sourceFile = sourcePath;
+	}
+	
+	public void run(){  
+		//编写自己的线程代码
+		System.out.println("The file path is:"+ this.sourceFile);
+		//源文件路径
+		String filePath = this.sourceFile;
+		String textName = filePath.substring(filePath.length()-9, filePath.length());
+		File file = new File(filePath);
+		BufferedReader br = null;
+		
+		try {
+			br = new BufferedReader(new FileReader(file));
+			Thread_writeFileTest thf = null;
+			while(true) {
+				//三行为一条完整的数据
+				String strLine01 = br.readLine();
+				String strLine02 = br.readLine();
+				String strLine03 = br.readLine();
+				String[] packageTime = strLine01.split(",");
+				String writeLine = textName + packageTime[1]+"+++++++"+strLine02+"\r\n";
+				//System.out.println("这里是文件："+filePath+"的数据："+writeLine);
+				//数据写入文件
+				
+				//创建一个新文件夹，并且在新的文件夹下新建文件
+				//然后往文件里写入数据
+				File dir = new File("D:/HTPHY/Electron/"+strLine01.substring(0, 4));
+				File newFile = new File("D:/HTPHY/Electron/"+strLine01.substring(0, 4)+"/newFile.txt");
+				if(!dir.exists()) {
+					dir.mkdir();
+				}
+	
+				if(!newFile.exists()) {
+					newFile.createNewFile();
+				}		
+				//br.close();
+				//写入文件
+				//实例化一个写入文件的线程
+				thf = new Thread_writeFileTest("D:/HTPHY/Electron/"+strLine01.substring(0, 4)+"/newFile.txt",writeLine);
+				thf.start();
+				//判断前一个线程是否死亡，如果已经死亡才可以继续创建新的线程
+				//如果没有写操作没有完成就不继续新创建线程
+				while(true) {
+					if(!thf.isAlive()) {
+						System.out.println("写入完成，继续读文件");
+						break;
+					}else {
+						try {
+							Thread.sleep(10);
+							System.out.println("写入未完成内容："+writeLine);
+							System.out.println(textName+"To"+packageTime[0]+":写入未完成，继续等待100ms...");
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				}
+				
+				//判断结束第一层while循环
+				if(strLine01.isEmpty() && strLine02.isEmpty()) {
+					break;
+				}
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println("文件不存在！");
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("IO异常！");
+			e.printStackTrace();
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+    }  
+}
+```
+线程2：写文件线程，写文件线程与读文件线程是一一对应的。目前为了数据的完整性是一条一条数据读取数据的，可以考虑多条数据一起读取，然后开启多个写的线程（这个没有实测过，不知道效率是否能够提升）。目前代码如下：
+```
+public class Thread_writeFileTest extends Thread {
+	//源文件路径
+	private String targetFile;
+	private String content;
+	
+	//构造方法
+	public Thread_writeFileTest(String targetFilePath, String content) {
+		this.targetFile = targetFilePath;
+		this.content = content;
+	}
+	
+	public void run(){
+        Calendar calstart=Calendar.getInstance();
+        File file=new File(targetFile);        
+        try {
+            if(!file.exists())
+                file.createNewFile();
+                        
+            //对该文件加锁
+            RandomAccessFile out = new RandomAccessFile(file, "rw");
+            FileChannel fcout=out.getChannel();
+            FileLock flout=null;
+            while(true){  
+                try {
+                	flout = fcout.tryLock();
+					break;
+				} catch (Exception e) {
+					 Date day=new Date();    
+			    	 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+					 System.out.println(df.format(day)+": write+有其他线程正在操作该文件，当前线程休眠1000毫秒"); 
+					 sleep(500);  
+				}
+				
+            }
+        
+            
+            //sleep(10);
+            StringBuffer sb=new StringBuffer();
+            Date day=new Date();    
+	    	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+            System.out.println(df.format(day)+":正在往"+this.targetFile+"写入文件！");
+            sb.append(this.content);
+             // 文件长度，字节数
+            long fileLength = out.length();
+            //将写文件指针移到文件尾。在文件内容之后追加
+            out.seek(fileLength);
+            out.write(sb.toString().getBytes("utf-8"));
+            
+            flout.release();
+            fcout.close();
+            out.close();
+            out=null;
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Calendar calend=Calendar.getInstance();
+        //System.out.println("写文件共花了"+(calend.getTimeInMillis()-calstart.getTimeInMillis())+"ms");
+    }
+}
+```
+测试代码：因为现在的代码对拆分的10个文件分别按包解析写入对应包文件夹的文件里面。所以读文件涉及到10个线程。测试代码如下：
+```
+public class Test {
+	public static void main(String[] args) {
+	    
+	    Thread_readFileTest thf01=new Thread_readFileTest("D:/HTPHY/Electron/text1.txt");  
+	    Thread_readFileTest td02 = new Thread_readFileTest("D:/HTPHY/Electron/text2.txt");
+	    Thread_readFileTest td03 = new Thread_readFileTest("D:/HTPHY/Electron/text3.txt");
+	    Thread_readFileTest td04 = new Thread_readFileTest("D:/HTPHY/Electron/text4.txt");
+	    Thread_readFileTest td05 = new Thread_readFileTest("D:/HTPHY/Electron/text5.txt");
+	    Thread_readFileTest td06 = new Thread_readFileTest("D:/HTPHY/Electron/text6.txt");
+	    Thread_readFileTest td07 = new Thread_readFileTest("D:/HTPHY/Electron/text7.txt");
+	    Thread_readFileTest td08 = new Thread_readFileTest("D:/HTPHY/Electron/text8.txt");
+	    Thread_readFileTest td09 = new Thread_readFileTest("D:/HTPHY/Electron/text9.txt");
+	    Thread_readFileTest td10 = new Thread_readFileTest("D:/HTPHY/Electron/text10.txt");
+	    
+	    thf01.start();  
+        td02.start();
+    	td03.start();
+    	td04.start();
+    	td05.start();
+    	td06.start();
+    	td07.start();
+    	td08.start();
+    	td09.start();
+    	td10.start();
+	}
+}
+```
+**实现过程中遇到的问题：主要是写入的时候涉及多线程共同操作一个文件的情况**
+- 引入文件锁，解决了多线程同时操作一个文件存在数据丢失的现象
+- 实例化一个写线程的时候进行了判断，只有当之前一个写入线程状态dead之后，才实例化新的线程。不这么做造成的后果是，会不断地产生新的线程去抢占资源，处于等待状态的线程越来越多，最直观的现象就是系统内存几乎用尽，几近处于假死状态了。
+
 #### 实现一下js加载本地json文件
 > 考虑是否通过后端加载数据，如果前端能直接读取（此方法不通，因为文件是放在服务器上的，无法通过客户端拿到数据）
