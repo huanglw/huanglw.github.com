@@ -141,7 +141,7 @@ public static boolean writeFileContent(String filepath,String newstr) throws IOE
 
     }
 ```
-> 运行之后查看拆分的文件发现每个文件行数都比计算的行数最后多出一个空白行，分析代码可以发现是因为fw.append(row + "\r\n");这行拼接代码最后都会多一个换行符。
+> 运行之后查看拆分的文件发现每个文件行数都比计算的行数最后多出一个空白行，分析代码可以发现是因为fw.append(row + "\r\n");这行拼接代码最后都会多一个换行符。这个不影响。
 
 #### 拆分之后的解析时常
 > 拆分成十个小文件之后，单线程对单个包含30万条数据的文件处理时间是3279.297s，大概是54分钟，如果同时开启十个线程对十个文件同时解析，那么所有数据大概在也在1小时左右可以解析完成。
@@ -519,6 +519,57 @@ public class Test {
 **实现过程中遇到的问题：主要是写入的时候涉及多线程共同操作一个文件的情况**
 - 引入文件锁，解决了多线程同时操作一个文件存在数据丢失的现象
 - 实例化一个写线程的时候进行了判断，只有当之前一个写入线程状态dead之后，才实例化新的线程。不这么做造成的后果是，会不断地产生新的线程去抢占资源，处于等待状态的线程越来越多，最直观的现象就是系统内存几乎用尽，几近处于假死状态了。
+
+> 目前文件拆分到解析分包存储所花费的时间大概在30mins，在可以接受的时间范围内，当然如果增加写文件的线程，或者调整线程里面涉及的sleep()时间，可以在一定的程度上加快解析的速度。这个留待后面再进行测试优化。下一步需要做的是模拟查询数据的接口，测试直接从文件解析获取数据的速度怎么样。
+
+#### 文件内容搜索
+**初步代码：**灰常的慢，效率极低
+```
+//查询方法
+	public ArrayList<String> search(String packageName, String[] tim, String code) throws IOException {
+		String path = "D:/HTPHY/Electron/"+packageName+"/newFile.txt";
+		File file = new File(path);
+		BufferedReader br = null;
+		//返回数据
+		String str = null;
+		//返回到List
+		ArrayList<String> result = new ArrayList<String>();
+		try {
+			br = new BufferedReader(new FileReader(file));
+			while(true) {
+				str = br.readLine();
+				if(str.isEmpty() || str == null) {
+					break;
+				}
+				//加号的转义：+ ==> \\u002B
+				System.out.println(str);
+				String tm = str.split("\\u002B\\u002B\\u002B\\u002B\\u002B\\u002B\\u002B")[0].substring(9, 18);
+				String codeContent = str.split("\\u002B\\u002B\\u002B\\u002B\\u002B\\u002B\\u002B")[1].split("|")[0];
+				if(Arrays.asList(tim).contains(tm)) {
+					result.add(codeContent);
+				}
+				
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			if(br!= null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return result;
+	}
+```
+**考虑到循环里面加一个数组，效率太低，应为毕竟刚才测试搜索单条数据也就只需要1s左右，现在搜索数组里10条数据竟然要120s，所以考虑修改如下：**
+```
+
+```
 
 #### 实现一下js加载本地json文件
 > 考虑是否通过后端加载数据，如果前端能直接读取（此方法不通，因为文件是放在服务器上的，无法通过客户端拿到数据）
