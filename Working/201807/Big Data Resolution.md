@@ -568,8 +568,62 @@ public class Test {
 ```
 **考虑到循环里面加一个数组，效率太低，应为毕竟刚才测试搜索单条数据也就只需要1s左右，现在搜索数组里10条数据竟然要120s，所以考虑修改如下：**
 ```
-
+//查询方法
+	public ArrayList<String> search(String packageName, String[] tim, String code) throws IOException {
+		String path = "D:/HTPHY/Electron/"+packageName+"/newFile.txt";
+		File file = new File(path);
+		BufferedReader br = null;
+		//返回数据
+		String str = null;
+		//返回到List
+		ArrayList<String> result = new ArrayList<String>();
+		//一行内容的前部分
+		String tm = null;
+		try {
+			
+			for(int i = 0; i<tim.length; i++) {
+				br = new BufferedReader(new FileReader(file));
+				System.out.println("++++++++++++++++++++++++++");
+				System.out.println("i的值是："+i);
+				System.out.println("++++++++++++++++++++++++++");
+				while(true) {
+					str = br.readLine();
+					
+					//System.out.println(str);
+					if(str!=null) {
+						tm = str.split("\\u002B\\u002B\\u002B\\u002B\\u002B\\u002B\\u002B")[0];
+					}
+					if(tm.contains(tim[i]) || str == null || str.isEmpty()) {
+						result.add(tm);
+						break;
+					}
+					
+				}
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			if(br!= null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return result;
+	}
 ```
+> 针对以上的代码一个简单的测试参数
+| 搜索个数 | 用时 |
+| ------ | ------ |
+| 1 | 1.26s |
+| 2 | 3.747s |
+| 20 | 24.908 |
+
+> 看上面的参数，即使是简单的查询都有花费不小的代价，如果前台需要所有的数据排序或者查询数据量大一点实现起来就会相当困难了。用户体验会很差，肯定比不上数据库的性能。
 
 #### 实现一下js加载本地json文件
 > 考虑是否通过后端加载数据，如果前端能直接读取（此方法不通，因为文件是放在服务器上的，无法通过客户端拿到数据）
