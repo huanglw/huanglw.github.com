@@ -633,7 +633,43 @@ public class Test {
 | sleep(10) | 25 mins |     
 | sleep(5) | 24 mins | 
 
-> 看上面的参数，即使是简单的查询都有花费不小的代价，如果前台需要所有的数据排序或者查询数据量大一点实现起来就会相当困难了。用户体验会很差，肯定比不上数据库的性能。
+> 看上面的参数，即使是简单的查询都有花费不小的代价，如果前台需要所有的数据排序或者查询数据量大一点实现起来就会相当困难了。用户体验会很差，肯定比不上数据库的性能。所以综合考虑还是把数据录入到数据库。
+
+> 数据库表设计
+
+| 包名 | 时间 | 参数 | 更新时间 |    
+| ------ | ------ | ------ | ------ |    
+| package | time | properity | updatetime |    
+
+**了解数据库表是否有和文件锁一样的读写权限的锁**   
+数据库自带锁机制，当数据更新、新增、删除的时候会自动上锁
+**了解如何查询数据库的最大连接数以及怎么设置最大连接数**    
+com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: Data source rejected establishment of connection,  message from server: "Too many connections"    
+```
+/**
+	* 获取MySQL的最大连接数，超过最大连接数会报异常
+	* @throws MySQLNonTransientConnectionException
+	* 经测试最大连接数默最大连接数认为270
+	*/
+@Test
+public void maxConnection() throws MySQLNonTransientConnectionException {
+	for(int i=0; i<280; i++) {
+		System.out.println(i);
+		MysqlObj mysql = new MysqlObj();
+		mysql.connect("jdbc:mysql://localhost:3306/electron", "root", "123456");
+	}	
+}
+```
+
+**并行操作数据库表**
+
 
 #### 实现一下js加载本地json文件
 > 考虑是否通过后端加载数据，如果前端能直接读取（此方法不通，因为文件是放在服务器上的，无法通过客户端拿到数据）
+
+
+> 问题汇总：
+
+- class.forname的作用？
+- 为什么线程测试不能在JUnit的Test里面进行？
+- 对于 CREATE TABLE 或 DROP TABLE 等不操作行的语句，executeUpdate 的返回值总为零。 怎么判断是否创建成功？
