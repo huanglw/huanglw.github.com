@@ -194,7 +194,7 @@ body {
 }
 .bottom .bottom-left {
   float: left;
-  width: calc(-100%);
+  width: calc(100% - 200px);
 }
 .bottom .bottom-left .bettings-info {
   padding-left: 20px;
