@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>骏彩</title>
+	<link rel="stylesheet/less" type="text/css" href="juncai.less">
+	<!-- from cdn -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js" ></script>
+</head>
+<body>
+<div class="header">
+双色球累计奖池0
+  <span class="message">彩民中得一等奖10亿元</span>
+  <span class="back">返回</span>
+</div><!--上-->
+<div class="content">
+  <ul class="tab-menu">
+    <li class="tab">
+      双色球
+    </li>
+    <li class="tab">七乐彩</li>
+    <li class="tab">3D</li>
+  </ul>
+  <div class="lottery-info">今日开奖&nbsp;&nbsp;<strong>第2018520期</strong></div>
+  <div class="content-top">
+    <div class="categories">
+        <button class="btn">普通投注</button>
+        <button class="btn">胆拖投注</button>
+    </div>
+    
+    <div class="tips-info">
+        <span>本期投注倒计时：<strong>0天23小时59分55秒</strong></span>
+        <br>
+        <span>第2018519期开奖号码： <strong>01 02 03 04 05 06 07</strong></span>
+    </div>
+  </div>
+  <div class="left">
+    <div class="comment1"><strong>注：</strong>选6个</div>
+    <div class="circle">01</div>
+    <div class="circle">02</div>
+    <div class="circle">03</div>
+    <div class="circle">04</div>
+    <div class="circle">05</div>
+    <div class="circle">06</div>
+    <div class="circle">07</div>
+    <div class="circle">08</div>
+    <div class="circle">09</div>
+    <div class="circle">10</div>
+    <div class="circle">11</div>
+    <div class="circle">12</div>
+    <div class="circle">13</div>
+    <div class="circle">14</div>
+    <div class="circle">15</div>
+    <div class="circle">16</div>
+    <div class="circle">17</div>
+    <div class="circle">18</div>
+    <div class="circle">19</div>
+    <div class="circle">20</div>
+    <div class="circle">21</div>
+    <div class="circle">22</div>
+    <div class="circle">23</div>
+    <div class="circle">24</div>
+    <div class="circle">25</div>
+    <div class="circle">26</div>
+    <div class="circle">27</div>
+    <div class="circle">28</div>
+    <div class="circle">29</div>
+    <div class="circle">30</div>
+    <div class="circle">31</div>
+    <div class="circle">32</div>
+  </div>
+  <div class="right">
+    <div class="comment2"><strong>注：</strong>选1个</div>
+    <div class="circle">01</div>
+    <div class="circle">02</div>
+    <div class="circle">03</div>
+    <div class="circle">04</div>
+    <div class="circle">05</div>
+    <div class="circle">06</div>
+    <div class="circle">07</div>
+    <div class="circle">08</div>
+    <div class="circle">09</div>
+    <div class="circle">10</div>
+    <div class="circle">11</div>
+    <div class="circle">12</div>
+    <div class="circle">13</div>
+    <div class="circle">14</div>
+    <div class="circle">15</div>
+    <div class="circle">16</div>
+  </div>
+  <div class="content-bottom">
+    上方点击选择六个红球或者
+    <button class="btn" id="random6">随机选六个</button>
+    --》
+    <button class="btn-lg" id="confirmBtn">确认选号</button>
+    《--
+    上方选择一个蓝色球或者<button class="btn" id="random1">随机选一个</button>
+                  
+  </div>
+</div><!--中-->
+<div class="bottom">
+  <div class="bottom-left"><!--100% - 200px-->
+    <div class="bettings-info" id="bettings-info"><!--60%-->
+        <!-- <div class='betting-info'>1.单注：01 02 03 04 05 06 07  2元  修改  删除</div>
+        <div class='betting-info'>2.单注：01 02 03 04 05 06 07  2元  修改  删除</div>
+        <div class='betting-info'>3.单注：01 02 03 04 05 06 07  2元  修改  删除</div>
+        <div class='betting-info'>4.单注：01 02 03 04 05 06 07  2元  修改  删除</div>
+        <div class='betting-info'>5.单注：01 02 03 04 05 06 07  2元  修改  删除</div> -->
+    </div>
+    <div class="bettings-option"><!--40%-->
+        <div>
+            倍数&nbsp;
+            <button class="btn" id="reduceBtn">-</button>
+            <button class="btn" id="currNum">1</button>
+            <button class="btn" id="addBtn">+</button>
+        </div>
+        <div>
+            <button class="btn" id="random5">机选5注</button>
+            <button class="btn" id="clearBtn">清除</button>
+        </div>
+        
+    </div>
+    
+  </div>
+  <div class="bottom-right">
+    <div>￥ <span id="totalNum">0</span> 元(共<span id="bettingNum">0</span>注)</div>
+    <div>
+        <button onclick="alert('确认购买，可以付钱了')">立即购买</button>
+    </div>
+  </div>
+  <i></i>
+</div><!--下-->
+
+<script type="text/javascript" src="juncai.js"></script>
+</body>
+</html>
