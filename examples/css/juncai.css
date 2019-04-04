@@ -17,7 +17,7 @@
   color: white;
 }
 html {
-  height: 100%;
+  height: 768px;
 }
 * {
   margin: 0;
@@ -26,7 +26,8 @@ html {
 }
 body {
   background: linear-gradient(to bottom, #0d5dad 0%, #0d5dad 100%);
-  height: 100%;
+  height: 768px;
+  min-height:768px;
 }
 .header {
   padding: 10px;
@@ -198,7 +199,7 @@ body {
 }
 .bottom .bottom-left .bettings-info {
   padding-left: 20px;
-  padding-top: 10px;
+  padding-top: 5px;
   width: 60%;
   height: 130px;
   border-right: dashed #ff0066 2px;
