@@ -26,8 +26,9 @@ html {
 }
 body {
   background: linear-gradient(to bottom, #0d5dad 0%, #0d5dad 100%);
-  height: 768px;
+  height: 768;
   min-height:768px;
+  position:relative;
 }
 .header {
   padding: 10px;
