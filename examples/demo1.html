@@ -119,6 +119,10 @@
         oInput.style.display='none';
         alert('复制成功');
     }
+    
+    var index = (Math.random()*10).toFixed(0)%3;
+    var weixins = ['weixin11111','weixin22222','weixin33333'];
+    document.getElementById('weixin').innerHTML = weixins[index];
   </script>
 </body>
 </html>
