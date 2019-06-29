@@ -6,7 +6,7 @@
   <style>
     body{padding:0;margin:0;}
     *{ box-sizing:border-box;}
-    img{max-width:100%;}
+    img{max-width:100%;width:100%;}
     .header{
       position:fixed;
       height: 100px;
@@ -37,14 +37,21 @@
     .header ul li:hover{
       box-shadow: 1px 1px 1px #333;
     }
+    .empty{
+       height:100px;
+    }
+    .topImage{}
+    .topImage img{
+      width:100%;
+      height:200px;
+    }
     #content{
-      padding-top:100px;
-      padding-left: 15px;
-      padding-right:15px;
+      padding-left: 30px;
+      padding-right:30px;
       padding-bottom:60px;
     }
     #content h2{
-      border-bottom: 1px solid #f6f6f6;
+      border-bottom: 1px solid #e6e6e6;
       padding-bottom: 10px;
     }
     .footter{
@@ -70,7 +77,8 @@
     .btn+.btn{margin-left:15px;}
     @media only screen and (min-width: 400px) and (max-width: 1024px){
       .header, .footter{height:120px;font-size:2rem;line-height:120px;}
-      #content{padding-top: 120px; padding-bottom:120px;}
+      .empty{height:120px;}
+      #content{padding-bottom:120px;}
        .header ul{
       line-height:100px;
       height: 100px;
@@ -80,7 +88,8 @@
     }
     @media only screen and (max-width: 400px){
        .header, .footter{height:120px;font-size:2rem;line-height:120px;}
-      #content{padding-top: 120px; padding-bottom:120px;}
+      .empty{height:120px;}
+      #content{padding-bottom:120px;}
        .header ul{
       line-height:100px;
       height: 100px;
@@ -98,6 +107,10 @@
       <li>关于我们</li>
       <li>联系我们</li>
     </ul>
+  </div>
+  <div class="empty"></div>
+  <div class="topImage">
+    <img width="100%" src="http://wx3.sinaimg.cn/large/e2054bf8gy1g4hwsd3tjwj20sg0ecjy8.jpg" alt="">
   </div>
   <div id="content" class="content">content</div>
   <div class="footter">加微信咨询：<span id="weixin">123456</span>   <button onclick="copyWeixin2()" class="btn">点击复制</button><button class="btn"><a href="weixin://">打开微信</a></button></div>
