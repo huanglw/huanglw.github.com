@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>一封信</title>
+  <style>
+    .box{
+      width: 100%;
+      background: -webkit-linear-gradient(top, transparent 20px, #eee 0),
+        -webkit-linear-gradient(left, transparent 20px, #eee 0);
+      background-size: 21px 21px;
+      font-family: cursive;
+      font-size: 18px;
+      text-align: left;
+    }
+    .box1 {
+      height: 100px;
+      background: -webkit-linear-gradient(top, transparent 31px, #eee 0);
+      background-size: 100% 32px;
+      line-height: 30px;
+      font-family: cursive;
+      font-size: 18px;
+    }
+    .box2 {
+      background: -webkit-linear-gradient(45deg, transparent 50%, #efefef 0);
+      background-size: 32px 32px;
+      line-height: 30px;
+      font-family: cursive;
+      font-size: 18px;
+      text-indent: 3em;
+    }
+    .heart{
+      color: red;
+    }
+    .heart::before {
+      content: '♥';
+      display: inline-block;
+      width: 1em;
+    }
+    .quote{
+      border-left: 5px solid #ccc;
+      background: #efefef;
+      padding: .5em 1em;
+    }
+    .t1 {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+    .t1::before{
+      content: '♥';
+      display: inline-block;
+      width: 1em;
+      color: red;
+    }
+    .content{
+      text-indent: 2em;
+      line-height: 1.4em;
+      word-spacing: .5em;
+    }
+    .waitting {
+      text-indent: 2em;
+      line-height: 1.4em;
+      word-spacing: .5em;
+    }
+    .dot {
+        display: inline-block; 
+        height: 1em; line-height: 1;
+        text-align: left;
+        vertical-align: -.25em;
+        overflow: hidden;
+    }
+    .dot::before {
+        display: block;
+        content: '...\A..\A.';
+        white-space: pre-wrap;   /* 也可以是white-space: pre */
+        animation: dot 3s infinite step-start both;
+    }
+    @keyframes dot {
+        33% { transform: translateY(-2em); }
+        66% { transform: translateY(-1em); }
+    }
+  </style>
+</head>
+<body>
+  <div class="quote">
+    <p>2022年3月22日 下午 16时53分 雨</p>
+    <p>这封信计划了很久，也想了很久，想要把跟你的美好的回忆都记录下来。但是，一直未完成。</p>
+    <p>你说，晴天适合相见，雨天适合思念。</p>
+    <p>在这个阴雨朦胧的下午，正值想念，无论如何，我要开始把未完成的事情做完。</p>
+    <p>这封信一时无法完成，希望自己可以一点一点去完成。</p>
+    <span class="heart"></span>
+    我希望这是一封很长很长、未完待续的信
+    <span class="heart"></span>
+  </div>
+  <div class="box">
+    <div class="t1">遇见</div>
+    <p class="content">
+      相识的日子应该是在2010年06月27日的晚上吧！因为我有一个网上的ID叫做“20100627的夜晚”，记得就是这个时间了。
+      初识的晚上你说了一句话，我至今都还记得，你说在网上轻易不会以真名示人，但是你想把真名告诉我。
+      所以我们认识了，你叫郭素君，我叫黄立文。对于你的信任我高兴坏了，在那个漆黑的夜里，对着手机傻傻地笑着漏出了大白牙。
+      那个时候你在我的内心就已经是不一般的存在了。
+    </p>
+    <p class="content">
+      郭素君，我喜欢这个名字，纯洁善良、朴实无华又带文化涵养。只是没想到，在后来的后来，这名字会烙在心中、烙在脑子里
+      成为了不可磨灭的存在。后来你说，我对于你是不是有特别的滤镜，我想肯定是有的，在非此即彼、非黑即白的年纪遇见你，
+      把你认定为唯一的存在。鉴于时间的不可逆转性，以前、现在、以后，你对于我来说一直都会是最最特别的。如果你愿意称之为
+      我对你的痴情，我倒很乐意接受。
+    </p>
+    <p class="content">
+      有你的日子，在过去的无数个平凡无奇的日子里闪烁着温暖甜蜜的光。从初识到后来每天都想有你的消息并没有花费多长时间，
+      外人看来肯定会觉得诧异，素未谋面的两个人，靠着手机网络，你成了我深深的牵挂，每天最期待的时候就是，你能上线，
+      看到你的消息会无比地开心（当然这一点至今也没有什么改变）。有你陪伴的夜晚再也不再漫长，好像跟你有说不完的话，
+      对你有无限的热情，熬最晚的夜也不觉得困，告别的成了最不舍的时候。每天期待、等待、开心的聊天、不舍的话别。那个时候
+      你是希望。
+    </p>
+    <div class="t1">未完待续<span class="dot"></span></div>
+  </div>
+</body>
+</html>
